@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
             color: #333;
             line-height: 1.8;
         }
@@ -35,8 +35,26 @@
         .title-slide {
             text-align: center;
             padding: 80px 50px;
-            background: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title-slide::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .company-name {
@@ -44,16 +62,21 @@
             font-weight: 600;
             margin-bottom: 25px;
             letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
         }
 
         .company-name-change {
             font-size: 1.1em;
             margin-top: 20px;
             padding: 12px 25px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 4px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 50px;
             display: inline-block;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
         }
 
         h2 {
@@ -61,8 +84,32 @@
             font-size: 2em;
             margin-bottom: 35px;
             padding-bottom: 12px;
-            border-bottom: 3px solid #3498db;
+            border-bottom: none;
             font-weight: 600;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
         h3 {
@@ -82,15 +129,34 @@
         }
 
         .info-card {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 12px;
             border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
         }
 
         .info-label {
             font-weight: 600;
-            color: #495057;
+            color: #667eea;
             font-size: 0.95em;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -105,16 +171,22 @@
         .business-section {
             margin: 30px 0;
             padding: 25px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid #3498db;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .business-section:hover {
+            border-left-width: 6px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
         }
 
         .business-title {
             font-size: 1.3em;
             font-weight: 600;
             margin-bottom: 18px;
-            color: #2c3e50;
+            color: #667eea;
         }
 
         .business-item {
@@ -142,15 +214,34 @@
         }
 
         .location-item {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             padding: 18px;
-            border-radius: 6px;
+            border-radius: 12px;
             border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-item:hover::before {
+            opacity: 1;
         }
 
         .location-name {
             font-weight: 600;
-            color: #2c3e50;
+            color: #667eea;
             font-size: 1.05em;
             margin-bottom: 8px;
         }
@@ -161,11 +252,11 @@
         }
 
         .group-company {
-            background: #e8f4f8;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f2 100%);
             padding: 30px;
-            border-radius: 6px;
+            border-radius: 12px;
             margin-top: 25px;
-            border: 1px solid #bee5eb;
+            border: 2px solid #bee5eb;
         }
 
         .group-company h3 {
@@ -187,14 +278,36 @@
         }
 
         .business-card-simple {
-            background: white;
-            padding: 18px;
-            border-radius: 6px;
-            border: 2px solid #3498db;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            color: #2c3e50;
+            padding: 30px 25px;
+            border-radius: 12px;
             text-align: center;
             font-weight: 600;
-            color: #2c3e50;
             font-size: 1.05em;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+        }
+
+        .business-card-simple:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-color: #764ba2;
+            background: linear-gradient(135deg, #d4ddff 0%, #bac8fe 100%);
+        }
+
+        .business-card-simple:nth-child(2) {
+            border-color: #667eea;
+        }
+
+        .business-card-simple:nth-child(3) {
+            border-color: #667eea;
+        }
+
+        .business-card-simple:nth-child(4) {
+            border-color: #667eea;
         }
 
         .partner-note {
@@ -234,10 +347,92 @@
         @media print {
             body {
                 background: white;
+                padding: 0;
             }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
             .slide {
                 box-shadow: none;
                 page-break-inside: avoid;
+                page-break-after: always;
+                margin: 0;
+                padding: 40px;
+                border-radius: 0;
+                border: none;
+            }
+            
+            .slide::before {
+                display: none;
+            }
+            
+            .title-slide {
+                page-break-after: always;
+                border-radius: 0;
+            }
+            
+            h2 {
+                color: #2c3e50;
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                color: #34495e;
+                page-break-after: avoid;
+            }
+            
+            .business-section,
+            .info-card,
+            .location-item {
+                page-break-inside: avoid;
+            }
+            
+            .business-section {
+                margin-bottom: 15px;
+            }
+            
+            /* ページ余白の設定 */
+            @page {
+                margin: 20mm;
+                size: A4;
+            }
+            
+            /* 最後のスライドの後に改ページを入れない */
+            .slide:last-child {
+                page-break-after: auto;
+            }
+        }
+        
+        /* PDF出力ボタン */
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .print-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
             }
         }
     </style>
@@ -365,8 +560,7 @@
             </div>
             <div class="business-section">
                 <div class="business-title">寝具メーカー</div>
-                <div class="business-item">海外品国内港入荷→保管・在庫管理→全国出荷→返品回収</div>
-                <div class="business-item">配送：佐川急便ドライ便＆ハコベル・西濃運輸など</div>
+                <div class="business-item">海外品国内港入荷→保管・在庫管理→全国出荷→返品回収（佐川急便ドライ便＆ハコベル・西濃運輸など）</div>
             </div>
             <div class="business-section">
                 <div class="business-title">松茸卸会社</div>
@@ -430,5 +624,15 @@
             </div>
         </div>
     </div>
+    
+    <!-- PDF出力ボタン -->
+    <button class="print-button" onclick="window.print()">📄 PDF出力</button>
+    
+    <script>
+        // PDF出力時のヒント
+        window.addEventListener('beforeprint', function() {
+            console.log('PDF出力を開始します');
+        });
+    </script>
 </body>
 </html>
